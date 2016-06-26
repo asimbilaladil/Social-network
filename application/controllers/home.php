@@ -6,7 +6,7 @@ class Home extends CI_Controller {
     public function __construct(){
 
         parent::__construct();
-       // error_reporting(0);
+       error_reporting(0);
 
         $data = $this->session->userdata('user_profile');
 
@@ -48,7 +48,27 @@ class Home extends CI_Controller {
         $data['post']  = $this->PostModel->getUserPost( $user_id );
         $data['amount']  = $this->PostModel->getUserAmount( $user_id );
         
-        
+        $data['sales'] = $data['buyers'] = $data['marketing'] = 0;
+
+        foreach ($data['amount'] as  $value) {
+            
+            if (  $value->category == 'Sales'  ) {
+                
+                $data['sales'] = $value->amount;
+
+            } else if (  $value->category == 'Buyers'  ) {
+
+                $data['buyers'] = $value->amount;
+
+            } else if (  $value->category == 'Marketing'  ) {
+                
+                $data['marketing'] = $value->amount;
+            
+            }
+        }
+
+        $data['total'] = $data['sales'] + $data['buyers'] + $data['marketing'];
+
         $this->load->view('common/header');
 
         // Send data to profile page

@@ -45,8 +45,9 @@ class PostModel extends CI_Model {
     public function getUserAmount( $id ){
 
 
-        $query = $this->db->query('SELECT category, SUM(amount) FROM post where user_id ='.$id. ' GROUP BY category');
+        $query = $this->db->query('SELECT category, SUM(amount) as amount FROM post where user_id ='.$id. ' GROUP BY category');
         $query->result();
+
         return $query->result();
 
 

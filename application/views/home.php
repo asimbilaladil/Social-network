@@ -26,19 +26,19 @@
             </div>
             <div class="info-follow">
                 <div class="trophies">
-                    <span style="color: greenyellow">$ 12</span>
+                    <span style="color: greenyellow">$ <?php echo $sales; ?></span>
                     <p style="color: greenyellow" class="buyer">Sales Amount</p>
                 </div>
                 <div class="trophies" >
-                    <span style="color: red">$ 12</span>
+                    <span style="color: red">$ <?php echo $buyers; ?></span>
                     <p style="color: red">Buyers Amount</p>
                 </div>
                 <div class="trophies" >
-                    <span style="color: cornflowerblue">$ 20</span>
+                    <span style="color: cornflowerblue">$ <?php echo $marketing; ?></span>
                     <p style="color: cornflowerblue">Marketing Amount</p>
                 </div>
                 <div class="trophies">
-                    <span>$ 149,902</span>
+                    <span>$ <?php echo $total; ?></span>
                     <p>Total</p>
                 </div>
             </div>
