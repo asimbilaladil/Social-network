@@ -31,17 +31,18 @@ class Login extends CI_Controller {
 
             $this->UserModel->addUser($data['user_profile']);
 
-            // Send data to profile page
-            $this->load->view('home', $data);
+            //Store user data in session
+            $this->session->set_userdata($data);
+
+            //redirect user after successfully login to home controller
+            redirect('Home/');
+
         } else {
             // Store users facebook login url
             $data['login_url'] = $this->facebook->getLoginUrl(array('scope' => 'email, user_location'));
             $this->load->view('login', $data);
         }
 
-
-        
-        //$this->load->view('login');
         $this->load->view('common/footer');
 
     }

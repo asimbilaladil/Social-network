@@ -44,40 +44,42 @@
             </div>
         </div>
     </section>
-    <!-- END / PROFILE FEATURE -->
+    <!-- END / PROFILE FEATURE -->  
     <section id="after-slider" class="after-slider section">
         <div class="awe-color bg-color-1"></div>
         <div class="after-slider-bg-2"></div>
         <div class="container">
-    
-            <div class="after-slider-content tb">
-                <div class="inner tb-cell">
-                    <h4>What did you do today?</h4>
-                    <div class="course-keyword">
-                        <input type="text" placeholder="Amount">
-                    </div>
-                  
-                   <div class="mc-select-wrap">
-                        <div class="mc-select">
-                            <select class="select" name="" id="all-categories" style="z-index: 10; opacity: 0;">
-                                <option value="" selected="">Sales</option>
-                                <option value="">Buyers</option>
-                                  <option value="">Marketing</option>
-                            </select>
+            <form action="<?php echo site_url('Home/') ?>" method="POST">
+                <div class="after-slider-content tb">
+                    <div class="inner tb-cell">
+                        <h4>What did you do today?</h4>
+                        <div class="course-keyword">
+                            <input type="number" name="amount" placeholder="Amount">
+                        </div>
+                      
+                       <div class="mc-select-wrap">
+                            <div class="mc-select">
+                                <select class="select" name="category" id="all-categories" style="z-index: 10; opacity: 0;">
+                                    <option value="Sales" selected="">Sales</option>
+                                    <option value="Buyers">Buyers</option>
+                                      <option value="Marketing">Marketing</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="tb-cell text-right">
-                    <div class="form-actions">
-                        <input type="submit" value="Post" class="mc-btn btn-style-1" style=" width: 70%; margin-bottom: 10px;">                    </div>
-    
-                </div>
+                    <div class="tb-cell text-right">
+                        <div class="form-actions">
+                            <input type="submit" value="Post" class="mc-btn btn-style-1" style=" width: 70%; margin-bottom: 10px;">                    </div>
+        
+                    </div>
 
-            </div>
+                </div>
+            </form>
 
     
         </div>
     </section>
+
     <section class="blog">
 
         <div class="container">
@@ -86,6 +88,7 @@
                 <!-- BLOG LIST -->
                 <div class="col-md-12">
                     <div class="blog-single-content">
+                    <?php foreach ($post as  $item) { ?>  
                         <!-- POST -->
                         <div class="post post-single">
                      
@@ -96,8 +99,8 @@
                                 <div class="image-thumb fl">
                                 </div>
                                 <div class="author-info">
-                                    <h6 class="author-title"><i  class="fa fa-calendar"> 26/06/2016</i> </h6>
-                                    <span class="author-name">Sales $ 100000</span>
+                                    <h6 class="author-title"><i  class="fa fa-calendar"> <?php echo  $item->date; ?></i> </h6>
+                                    <span class="author-name"><?php echo  $item->category . " $ " .$item->amount; ?></span>
                                                          
                                 </div>
                             </div>
@@ -105,25 +108,7 @@
 
                         </div>
                         <!-- END / POST -->
- <!-- POST -->
-                        <div class="post post-single">
-                     
-
-
-                            <!-- ABOUT AUTHOR -->
-                            <div class="about-author">
-                                <div class="image-thumb fl">
-                                </div>
-                                <div class="author-info">
-                                    <h6 class="author-title"><i  class="fa fa-calendar"> 26/06/2016</i> </h6>
-                                    <span class="author-name">Buyers $ 100000</span>
-                                                         
-                                </div>
-                            </div>
-                            <!-- END / ABOUT AUTHOR -->
-                            
-                        </div>
-                        <!-- END / POST -->                        
+                    <?php } ?>                      
 
 
                         
